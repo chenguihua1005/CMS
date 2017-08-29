@@ -1,0 +1,87 @@
+<top-menu></top-menu>
+<main-menu></main-menu>
+
+<div id="main">
+
+
+
+
+	<div class="container">
+		<div class="row">
+
+			<!--<br>-->
+
+			<div [ngSwitch]="sPage">
+				<div *ngSwitchCase="'top-chart'">
+					<div class="col-md-10 col-xs-12 col-md-offset-1 push-md-1">
+						<div class="content-header">
+							<h1></h1>
+						</div>
+						<div class="content-box">
+							<app-chart></app-chart>
+
+						</div>
+					</div>
+				</div>
+				<app-baiduMap *ngSwitchCase="'app-baiduMap'"></app-baiduMap>
+				<div *ngSwitchCase="'demo-section'">
+					<div class="col-md-10 col-xs-12 col-md-offset-1 push-md-1">
+						<div class="content-header">
+							<h1></h1>
+						</div>
+						<div class="content-box">
+							<tab-panel></tab-panel>
+						</div>
+					</div>
+				</div>
+				<div *ngSwitchCase="'top-query'">
+					<div class="col-md-10 col-xs-12 col-md-offset-1 push-md-1">
+						<div class="content-header">
+							<h1></h1>
+						</div>
+						<div class="content-box">
+							<tab-query></tab-query>
+						</div>
+					</div>
+				</div>
+				<div *ngSwitchCase="'top-edit'">
+					<div class="col-md-10 col-xs-12 col-md-offset-1 push-md-1">
+						<div class="content-header">
+							<h1></h1>
+						</div>
+						<div class="content-box">
+							<tab-edit></tab-edit>
+						</div>
+					</div>
+				</div>
+				
+				<div *ngSwitchDefault>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--<app-footer></app-footer>-->
+
+
+
+</div>
+
+<!--<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="jumbotron">
+				<h3>
+					Layoutit 这是基于bootstrap3.0的布局神器
+				</h3>
+				<p>
+					当前Layoutit是基于bootstrap3.*的。
+				</p>
+				<p>
+					<a rel="nofollow" class="btn btn-primary btn-large" href="http://www.layoutit.cn">前往2.0版本 »</a>
+				</p>
+				<p>
+					<a rel="nofollow" class="btn btn-primary btn-large" href="http://www.w2bc.com/bootstrap">Bootstrap 在线教程 »</a>
+				</p>
+			</div>
+		</div>
+	</div>-->

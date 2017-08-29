@@ -1,0 +1,16 @@
+<div class="api-doc-component">
+	<p-dataTable [value]="subsysListData" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+		
+		<p-column field="name" header="名字"></p-column>
+		<p-column field="status" header="状态"></p-column>  
+		<p-column styleClass="edit-button" header="操作">
+			    <ng-template let-car="rowData" pTemplate="body">
+					<button type="button"pButton  (click)="editBtn(cur)"label="布防"></button>
+					<button type="button"pButton  (click)="editBtn(cur)"label="撤防"></button>
+			   </ng-template>	  
+		</p-column> 
+	</p-dataTable>
+</div>
+
+
+

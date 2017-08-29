@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class CMSPage {
+export class DemoPage {
   navigateTo() {
     return browser.get('/');
   }

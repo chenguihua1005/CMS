@@ -1,0 +1,15 @@
+.card.customClass,
+.card.customClass .card-header,
+.panel.customClass {
+  background-color: #5bc0de;
+  color: #fff;
+}
+.panel.customClass .panel-body {
+  background-color: #337aa7;
+}
+#top-menu .logos {
+      height: 72px;
+    padding-left: 45px;
+    vertical-align: middle;
+    display: table-cell;
+}

@@ -1,0 +1,27 @@
+<div id="top-menu">
+	<div class="Self-Logo">
+	</div>
+
+	<!-- <audio id="myaudio" src="assets/voice/police.wav" controls="controls" loop="true" hidden="true">
+	</audio> -->
+	<audio id="myaudio" controls="controls" loop="true" hidden="true">
+	</audio>
+
+
+	<div id="mobile-main-menu">
+		<img alt="" src="assets/images/menu-left.svg">
+	</div>
+
+	<div class="top-menu-container">
+		<ul>
+			<li *ngFor="let curBtn of btnList;" (click)="clickBtn(curBtn);" onmouseover="this.style.backgroundColor='#1792e5';" onmouseout="this.style.backgroundColor='#ffffff';">
+				<a onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#808080';">{{curBtn.name}}</a>
+			</li>
+			<li>
+				<p-growl [(value)]="msgs" sticky="true" life="3000" styleClass="ui-growl.message"></p-growl>			
+			</li>
+
+		</ul>
+	</div>
+
+</div>

@@ -1,0 +1,28 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"> 
+      <div>
+            当前客户：
+      </div>
+      <!--<p-listbox [options]="customs" [(ngModel)]="selectCustomID" [style]="{'width':'190px','max-height':'250px'}"></p-listbox> !-->
+      <p-dropdown [options]="customs" [(ngModel)]="selectCustomID" (onChange)="selectedOption($event)" [style]="{'width':'190px','max-height':'250px'}"></p-dropdown> 
+    </div>
+    
+  </div> 
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-9">
+      <p-pickList [source]="unBoundDeviceList" [target]="boundDeviceList" sourceHeader="未绑定设备" targetHeader="已绑定设备" 
+                  (onMoveToTarget)="oneMoveToTarget($event)" (onMoveToSource)="oneMoveToSource($event)" [responsive]="true" [sourceStyle]="{'height':'300px'}" [targetStyle]="{'height':'300px'}">
+          <ng-template let-Account pTemplate="item">
+              <div class="ui-helper-clearfix">
+                  {{Account.name}}
+              </div>
+          </ng-template>
+      </p-pickList> 
+    </div>        
+  </div>  
+</div> 
+

@@ -1,0 +1,36 @@
+<div class="api-doc-component">
+
+	<p-dataTable [value]="domainList" selectionMode="single" [(selection)]="selectedAccount" (onRowSelect)="onRowSelect($event)" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+		
+			<p-column field="domainid" header="域ID"></p-column>
+			<p-column field="name" header="名字"></p-column> 
+			<p-column field="describe" header="描述"></p-column> 
+			<p-column field="enabled" header="使能"></p-column>
+			<p-column field="duetime" header="持续时间"></p-column> 
+			<!--<p-column field="account" header="编辑"></p-column> !-->
+			<p-footer>
+				<div class="ui-helper-clearfix" style="width:100%">
+					<button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+				</div>
+			</p-footer>
+	</p-dataTable>
+
+	<p-dialog header="domain Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="modal" width="500" >
+        <div   *ngIf="account">
+            <div class="row">
+                <div class="col-md-4"><label for="name">名字</label></div>
+                <div class="col-md-8"><input pInputText id="name" [(ngModel)]="account.name" /></div>
+            </div>
+        </div>    
+        <p-footer>
+            <div >
+                <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+                <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+            </div>
+        </p-footer>
+	</p-dialog>
+</div>
+
+
+
+

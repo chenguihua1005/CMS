@@ -1,0 +1,34 @@
+<!-- for test bind oper device !-->
+<!--<bind-oper-device> </bind-oper-device>!-->
+
+
+<!-- normal version !-->
+<!--!-->
+<div [ngSwitch]="sPage">
+  <sel-login *ngSwitchCase="'sel-login'"></sel-login>
+  <sel-home *ngSwitchCase="'sel-home'"> </sel-home>
+  <div *ngSwitchCase="'C'">Var is C</div>
+  <div *ngSwitchCase="'D'">Var is C, too</div>
+  <div *ngSwitchDefault>Var is something else</div>
+</div>
+
+
+
+
+<!-- test ok version 
+<sel-login></sel-login>
+<top-menu></top-menu>
+<app-main-menu-custom></app-main-menu-custom>
+<app-main-menu-operator></app-main-menu-operator>
+!-->
+
+<!-- !-->
+
+
+<!--
+  <main-menu></main-menu>
+  <app-main-menu-custom-panel></app-main-menu-custom-panel>
+!--> 
+<!--  <sel-login></sel-login> !-->
+
+

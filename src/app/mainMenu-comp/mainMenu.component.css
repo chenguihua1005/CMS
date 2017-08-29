@@ -1,0 +1,22 @@
+.card.customClass,
+.card.customClass .card-header,
+.panel.customClass {
+  background-color: #5bc0de;
+  color: #fff;
+   width:80px;
+}
+.panel.customClass .panel-body {
+  background-color: #FFF;
+   width:80px;
+}
+
+
+.panel.customClass2 {
+  background-color: #F5F5F5;
+  width:80px;
+  color: #fff;
+}
+.panel.customClass2 .panel-body {
+  background-color: #F5F5F5;
+  width:80px;
+}

@@ -1,10 +1,10 @@
-import { CMSPage } from './app.po';
+import { DemoPage } from './app.po';
 
-describe('cms App', () => {
-  let page: CMSPage;
+describe('demo App', () => {
+  let page: DemoPage;
 
   beforeEach(() => {
-    page = new CMSPage();
+    page = new DemoPage();
   });
 
   it('should display message saying app works', () => {

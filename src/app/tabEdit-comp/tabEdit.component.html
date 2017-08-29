@@ -1,0 +1,27 @@
+<p-tabView (onChange)="handleChange($event)">
+	<p-tabPanel header="域列表">
+		<domain-table></domain-table>
+	</p-tabPanel>
+	<p-tabPanel header="设备帐号列表" [selected]="true">
+		<account-table></account-table>
+	</p-tabPanel>
+	<p-tabPanel header="客户列表">
+		<custom-table></custom-table>
+	</p-tabPanel>
+	<p-tabPanel header="客户关联设备">
+		<bind-custom-device></bind-custom-device>
+		<!--<tab (select)="bindCustomDevicePage()"  heading="客户关联设备">	
+			
+		</tab> !-->  
+	</p-tabPanel>
+	<p-tabPanel header=" 操作员列表">
+		<account2-table></account2-table>
+	</p-tabPanel>
+	<p-tabPanel header="操作员关联设备">
+		<bind-oper-device></bind-oper-device>    
+	</p-tabPanel>
+	<p-tabPanel header="服务器配置">
+		<!--<cid-table></cid-table>!-->
+	</p-tabPanel>	
+
+</p-tabView>

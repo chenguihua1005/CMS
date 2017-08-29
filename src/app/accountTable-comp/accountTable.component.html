@@ -1,0 +1,47 @@
+<div class="api-doc-component">
+	<!--[responsive]="true">!-->   
+	<p-dataTable [value]="accountListData" selectionMode="single" [(selection)]="selectedAccount" (onRowSelect)="onRowSelect($event)" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[10]">
+		<p-column field="name" header="名字"></p-column>
+		<p-column field="password" header="密码"></p-column> 
+		<!--<p-column field="getTypeStringByTypeID(cur.type)" header="类型"></p-column>!-->
+		<p-column field="type" header="类型"></p-column>
+		<p-column field="online" header="状态"></p-column>
+		<p-column field="registertime" header="注册时间"></p-column>
+		<p-footer>
+			<div class="ui-helper-clearfix" style="width:100%">
+				<button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+			</div>
+		</p-footer>
+	</p-dataTable>
+
+	<p-dialog header="Account Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="modal" width="500" >
+        <div   *ngIf="account">
+            <div class="row">
+                <div class="col-md-4"><label for="name">名字</label></div>
+                <div class="col-md-8"><input pInputText id="name" [(ngModel)]="account.name" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><label for="password">密码</label></div>
+                <div class="col-md-8"><input pInputText id="password" [(ngModel)]="account.password" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><label for="type">类型</label></div>
+                <div class="col-md-8"><input pInputText id="type" [(ngModel)]="account.type" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><label for="online">状态</label></div>
+                <div class="col-md-8"><input pInputText id="online" [(ngModel)]="account.online" /></div>
+			</div>
+			<div class="row">
+                <div class="col-md-4"><label for="registertime">注册时间</label></div>
+                <div class="col-md-8"><input pInputText id="registertime" [(ngModel)]="account.registertime" /></div>
+            </div>
+        </div>    
+        <p-footer>
+            <div >
+                <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+                <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+            </div>
+        </p-footer>
+    </p-dialog>
+</div>

@@ -1,0 +1,34 @@
+<div class="api-doc-component">
+
+	<!--<h3>
+    <a target="_blank" href="https://github.com/valor-software/ng2-bootstrap/tree/development/src/buttons/button-radio.directive.ts">报警消息</a>
+  </h3>-->
+	<br>子系统选择：
+	<div class="btn-group" dropdown>
+		<button id="single-button" type="button" class="btn btn-primary dropdown-toggle" dropdownToggle>请选择<span class="caret"></span>
+  </button>
+		<ul *dropdownMenu role="menu" class="dropdown-menu">
+			<!--<li role="menuitem">
+				<a class="dropdown-item" href="#">无</a>
+			</li>-->
+			<li role="menuitem" *ngFor="let cur of subsysList;">
+				<a class="dropdown-item" (click)="clikedDropdown(cur);" href="#">{{cur.name}}</a>
+			</li>
+		</ul>
+	</div>
+	<hr>
+	<div class="grid grid-pad">
+		<a *ngFor="let curScene of sceneList" (click)="editBtn(curScene); lgModal.show();" class="col-1-4">
+			<div class="module curScene" [ngClass]="{'module-red' : curScene.checked}">
+				<h4>{{curScene.name}}</h4>
+			</div>
+		</a>
+	</div>
+	<!--<pre class="card card-block card-header">Page: {{currentPage}} / {{totalItems}}</pre>-->
+
+
+
+</div>
+
+
+

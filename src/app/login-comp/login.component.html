@@ -1,0 +1,159 @@
+<!--<router-outlet></router-outlet>-->
+
+<!--
+	<p>hello </p> 
+1 ok !-->  	
+<!-- 
+<div>
+	<button type="button" class="ui-button-success ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" pButton icon="fa-close" label="Delete"></button>
+<div>
+2 ok !-->	
+
+<!--3 ok 
+<div class="containerLogin">
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4 col-sm-5 col-sm-offset-5">
+				<button type="button" pButton icon="fa-close" label="Delete" class="ui-button-success ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"></button>
+			</div>
+		</div>
+	</div>
+
+</div>
+!-->
+
+<!-- 
+<p-panel header= "Title" > Please Sign In1 </p-panel>   
+<p-panel header= "Title" class="ui-panel-title"> Please Sign In2 </p-panel>  
+4 ok !-->
+
+<!--5 ok okok nomal version! -->
+<div class="containerLogin">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<div class="login-panel panel panel-default">
+				<p-panel> 
+						<p-header style="font-size:15px">Please Sign In</p-header>
+						<br>
+						<div class="panel-body">
+						<form (ngSubmit)="onSubmit()"  #heroForm="ngForm">  
+								<div class="row">
+									<div class="form-group">
+										<div class="col-md-4">
+											User Name:
+										</div>
+										<div class="col-md-8">
+											<input class="form-control" pInputText type="text"   placeholder="client0" id="name"
+											[(ngModel)]="bindName" name="name"/>
+										</div>
+									</div>
+								</div>	
+								<div class="row">
+									<div class="col-md-4">
+										Password:
+									</div>
+									<div class="col-md-8">
+										<input class="form-control" pInputText type="password"  placeholder="123456" id="name"
+											[(ngModel)]="bindPassword" name="password"/>
+									</div>
+								</div>
+								<div class="checkbox">
+									<label>
+                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                </label>
+								</div>
+								<div class="row">
+
+									<div class="col-md-12">
+										<button pButton type="submit" label="Login" class="btn btn-lg btn-success btn-block"></button>
+									</div>
+								</div>
+						</form>
+						</div>
+				</p-panel> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!--
+<div class="containerLogin">
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<p-panel header= "Title"> Please Sign In
+					
+						<form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">  
+								<div class="row">
+									<div class="col-md-2">
+										User Name:
+									</div>
+									<div class="col-md-6">
+										<input pInputText type="text" formControlName="username" placeholder="Required"/>
+									</div>
+									<div class="col-md-4">
+										<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['username'].valid&&userform.controls['username'].dirty">
+											<i class="fa fa-close"></i>
+											Username is required
+										</div>
+									</div>
+								</div>	
+								<div class="row">
+									<div class="col-md-2">
+										Password:
+									</div>
+									<div class="col-md-6">
+										<input pInputText type="password" formControlName="password" placeholder="Required - Min(6)"/>
+									</div>
+									<div class="col-md-4">
+										<div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['password'].valid&&userform.controls['password'].dirty">
+											<i class="fa fa-close"></i>
+											<span *ngIf="userform.controls['password'].errors['required']">Password is required</span>
+											<span *ngIf="userform.controls['password'].errors['minlength']">Must be longer than 6 characters</span>
+										</div>
+									</div>
+								</div>
+								<div class="checkbox">
+									<label>
+                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                </label>
+								</div>
+								<div class="row">
+									<div class="col-md-2"></div>
+									<div class="col-md-6">
+										<button pButton type="submit" label="Login" [disabled]="!userform.valid"></button>
+									</div>
+									<div class="col-md-4"></div>
+								</div>
+								<div style="text-align:center;margin-top:20px" *ngIf="submitted">
+									Form Submitted
+									<br>
+									{{diagnostic}}
+								</div>
+							
+						</form>
+				
+				</p-panel>
+			</div>
+		</div>
+	</div>
+
+</div>
+6 error!-->
+
+<!-- 7 panel view 
+<p-panelMenu [model]="items" [style]="{'width':'300px'}"></p-panelMenu>
+<h3 class="first">Single</h3>
+<p-selectButton [options]="types" [(ngModel)]="selectedType" (onChange)="selected($event)"></p-selectButton>
+
+
+<p-chart type="bar" [data]="data"></p-chart>
+!-->
+
