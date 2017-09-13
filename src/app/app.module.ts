@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, EventEmitter} from '@angular/core';
 
 //import----3rd
 import { ChartsModule } from 'ng2-charts';
@@ -22,7 +22,7 @@ import { GrowlModule } from 'primeng/primeng';
 import {ChartModule} from 'primeng/primeng';
 import {SelectButtonModule} from 'primeng/primeng';
 
-//declarations 
+//declarations
 import { AppComponent } from './app-comp/app.component';
 import { HomeComponent } from './home-comp/home.component';
 import { LoginComponent } from './login-comp/login.component';
@@ -55,8 +55,6 @@ import { Custom } from './services/custom';
 import { CustomList } from './services/customList';
 import { Domain} from './services/domain';
 
-
-
 //import { BaiduMap } from "angular2-baidu-map";
 //https://www.angular.cn/docs/ts/latest/cli-quickstart.html
 //http://valor-software.com/ngx-bootstrap/#/
@@ -70,23 +68,23 @@ import { Domain} from './services/domain';
     MainMenuCustomPanelComponent,
     MainMenuOperatorComponent,
     MainMenuCustomComponent,
-    TabEditComponent,	  
+    TabEditComponent,
     TabPanelComponent,
     TabQueryComponent,
     ChartComponent,
     BaiduMapComponent,
     AlarmTableComponent,
-    SubsysTableComponent,	
+    SubsysTableComponent,
     DomainTableComponent,
     AccountTableComponent,
     AccountTable2Component,
     CustomTableComponent,
     BindCustomDeviceComponent,
     BindOperDeviceComponent,
-    ZoneTableComponent   
+    ZoneTableComponent
   ],
   imports: [
-    //system    
+    //system
     BrowserModule,
     FormsModule,
     HttpModule,

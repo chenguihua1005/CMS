@@ -1,4 +1,4 @@
-import { Component, Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class Const {
@@ -17,7 +17,7 @@ export class Const {
 			//return "报警";
 			s =  "报警/";
 		} else{
-			s =  "消音/";
+			s =  "正常/";
 		}
 		 if (status[1] == '1') {
 			s = s + "故障/";

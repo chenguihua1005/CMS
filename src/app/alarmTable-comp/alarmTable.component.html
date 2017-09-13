@@ -1,29 +1,19 @@
 <div class="api-doc-component">
-	<p-dataTable [value]="alarmListData" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
-		<p-column field="customid" header="客户ID"></p-column>
-		<p-column field="devicename" header="设备ID"></p-column> 
-		<p-column field="account" header="账户"></p-column>
-		<p-column field="subsysid" header="子系统"></p-column>
-		<p-column field="eventid" header="防区"></p-column>
-		<p-column field="actionstate" header="状态"></p-column>
-		<p-column field="comments" header="备注"></p-column>
-		<p-column field="time" header="时间"></p-column> 
-	</p-dataTable>	
-	<!--
-				<td class="col-xs-1">
-					<div>
-						<p>{{getEventID(curAlarm.eventid)}}</p>
-					</div>
-				</td>
-				<td class="col-xs-1">
-					<div>
-						<p>{{curAlarm.comments}}</p>
-					</div>
-				</td>
-				<td class="col-xs-1">
-					<div>
-						<p>{{getCovertGMT(curAlarm.time)}}</p>
-					</div>
-				</td>
-	!-->				
+	<div class="container" >
+    	<div class="row">
+      		<div class="col-sm-12 col-md-12 col-lg-12">
+				<p-dataTable [value]="alarmListData" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+					<p-column field="customid" header="客户ID"></p-column>
+					<p-column field="devicename" header="设备ID"></p-column> 
+					<p-column field="account" header="账户"></p-column>
+					<p-column field="subsysid" header="子系统"></p-column>
+					<p-column field="cccid" header="防区ID"></p-column>
+					<p-column field="eventid" header="CID"></p-column>
+					<p-column field="actionstate" header="状态"></p-column>
+					<p-column field="comments" header="备注"></p-column>
+					<p-column field="time" header="时间"></p-column> 
+				</p-dataTable>	
+			</div>
+		</div>
+	</div>				
 </div>

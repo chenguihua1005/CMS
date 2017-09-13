@@ -1,4 +1,4 @@
-import { Component, Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Custom } from './custom';
 import { Zone } from './zone';
 import { Alarm } from './alarm';
@@ -21,6 +21,7 @@ export class CustomList {
 	public mAlarmFlag = false;
 	public opername: string;
 	public pwd: string;
+	public alarmDeviceLogList: Map<string, number> = new Map<string, number>();
 
 
 	customList: Array<Custom> = [];   //for main menu custom panel data
@@ -312,6 +313,40 @@ export class CustomList {
 		return arr;
 	}
 
+	public setAlarmDevice(name:string): void {
+		if(this.alarmDeviceLogList.has(name))
+		{
+			this.alarmDeviceLogList.set(name, this.alarmDeviceLogList.get(name)+1);
+		}
+		else
+		{
+			this.alarmDeviceLogList.set(name, 1);
+		}
+	}
+
+	public getAlarmDevice(): string[] {
+		let retstr: string[] = [];
+		var keyIter = this.alarmDeviceLogList.keys();
+		do{
+			var item = keyIter.next();
+			if(item.done==false)
+			{
+				retstr.push(item.value);
+			}
+		}while(item.done==false);
+
+		return retstr;
+	}
+
+	public alarmDeviceCount( ): number {
+		let count = this.alarmDeviceLogList.size;
+		return count;		
+	}
+
+	public clearAlarmDevice(name:string): void {
+		if(this.alarmDeviceLogList.has(name))
+			this.alarmDeviceLogList.delete(name);
+	}	
 }
 
 //{"action":"clientgetdevicelist-ack","idack":"0","errorcode":0,"errormsg":"成功","customid":"icbc01",

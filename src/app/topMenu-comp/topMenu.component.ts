@@ -31,8 +31,19 @@ export class TopMenuComponent {
 	alarmMsg: number = 0;
 	msgs: Message [] = [];
 
+  public aaa: String;
+  public bbb: String;
 
 	constructor(private comEvent: ComEvent, private mCusomList: CustomList) {
+
+    window['mo'].event.subscribe((json: any) => {
+      this.aaa = json.aaa;
+    });
+    window['mo'].setMO({'send': 12345});
+
+    window['modal2'].subscribe((json: any) => {
+      this.bbb = json.bbb;
+    });
 
 		comEvent.mComEvent.subscribe((sJson: string) => {
 			let rep = JSON.parse(sJson);
@@ -66,8 +77,12 @@ export class TopMenuComponent {
 			type: 'danger',
 			msg: " " + devicename
 		}));
-		
+
 	}
+
+  focus(){
+    window['mo'].setMO({'send': 12345});
+  }
 
 }
 

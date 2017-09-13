@@ -1,4 +1,4 @@
-import { Component, Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class Account {
@@ -20,7 +20,7 @@ export class Account {
     public checked: boolean;
 
 	constructor() {
-		
+
 	}
 	public setAccount(sJson: any): void {
 		this.cidtype = sJson['cidtype'];
@@ -38,6 +38,9 @@ export class Account {
 		this.version = sJson['version'];
 		this.x = sJson['x'];
 		this.y = sJson['y'];
+
+
+    //Object.assign(this, sJson);
 	}
 
 	public setAccountByAccount(tAccount: Account): void {
@@ -56,6 +59,8 @@ export class Account {
 		this.version = tAccount.version;
 		this.x = tAccount.x;
 		this.y = tAccount.y;
+
+    //Object.assign(this, tAccount);
 	}
 
 }

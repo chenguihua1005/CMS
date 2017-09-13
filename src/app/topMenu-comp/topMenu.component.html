@@ -1,12 +1,25 @@
 <div id="top-menu">
-	<div class="Self-Logo">
+
+
+  <div class="row">
+    测试数据2
+    <input
+      [(ngModel)]="aaa" (focus)="focus()"/>
+  </div>
+<br>
+  <div class="row">
+    测试数据3
+    <input
+      [(ngModel)]="bbb"/>
+  </div>
+
+
+
+  <div class="Self-Logo">
 	</div>
 
-	<!-- <audio id="myaudio" src="assets/voice/police.wav" controls="controls" loop="true" hidden="true">
-	</audio> -->
-	<audio id="myaudio" controls="controls" loop="true" hidden="true">
+	<audio id="myaudio" src="assets/voice/police.wav" controls="controls" loop="true" hidden="true">
 	</audio>
-
 
 	<div id="mobile-main-menu">
 		<img alt="" src="assets/images/menu-left.svg">
@@ -18,7 +31,7 @@
 				<a onmouseover="this.style.color='#ffffff';" onmouseout="this.style.color='#808080';">{{curBtn.name}}</a>
 			</li>
 			<li>
-				<p-growl [(value)]="msgs" sticky="true" life="3000" styleClass="ui-growl.message"></p-growl>			
+				<p-growl [(value)]="msgs" sticky="true" life="3000" styleClass="ui-growl.message"></p-growl>
 			</li>
 
 		</ul>

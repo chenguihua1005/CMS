@@ -1,4 +1,4 @@
-import { Component, Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class Relay {

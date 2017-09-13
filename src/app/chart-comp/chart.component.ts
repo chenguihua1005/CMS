@@ -61,16 +61,16 @@ export class ChartComponent {
                 {
                     data: this.doughnutChartData,
                     backgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56",
-                        "#9CCC65"
+                        "#1792e5",
+                        "#9AC066",
+                        "#FED05E",
+                        "#F38B53"
                     ],
                     hoverBackgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56",
-                        "#9CCC65"
+                        "#1792e5",
+                        "#9AC066",
+                        "#FED05E",
+                        "#F38B53"
                     ]
                 }]    
             };
@@ -83,14 +83,14 @@ export class ChartComponent {
             datasets: [
                 {
                     label: '在线',
-                    backgroundColor: '#42A5F5',
-                    borderColor: '#1E88E5',
+                    backgroundColor: '#1792e5',
+                    borderColor: '#1792e5',
                     data: data.online
                 },
                 {
                     label: '离线',
-                    backgroundColor: '#9CCC65',
-                    borderColor: '#7CB342',
+                    backgroundColor: '#8bc9f2',
+                    borderColor: '#8bc9f2',
                     data: data.offline
                 }
             ]
@@ -117,16 +117,16 @@ export class ChartComponent {
                 {
                     data: this.doughnutChartData,
                     backgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56",
-                        "#9CCC65"
+                        "#1792e5",
+                        "#9AC066",
+                        "#FED05E",
+                        "#F38B53"
                     ],
                     hoverBackgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56",
-                        "#9CCC65"
+                        "#1792e5",
+                        "#9AC066",
+                        "#FED05E",
+                        "#F38B53"
                     ]
                 }]    
             };
@@ -139,14 +139,14 @@ export class ChartComponent {
             datasets: [
                 {
                     label: '在线',
-                    backgroundColor: '#42A5F5',
-                    borderColor: '#1E88E5',
+                    backgroundColor: '#1792e5',
+                    borderColor: '#1792e5',
                     data: data.online
                 },
                 {
                     label: '离线',
-                    backgroundColor: '#9CCC65',
-                    borderColor: '#7CB342',
+                    backgroundColor: '#8bc9f2',
+                    borderColor: '#8bc9f2',
                     data: data.offline
                 }
             ]
@@ -160,14 +160,14 @@ export class ChartComponent {
                     label: '保安中心NBIot',
                     data: [28, 48, 40, 19, 86, 27, 90],
                     fill: false,
-                    borderColor: '#565656'
+                    borderColor: '#f37021'
                 },
              
                 {
                     label: '工商银行',
                     data: [69, 50, 80, 51, 56, 33, 40],
                     fill: false,
-                    borderColor: '#42A5F5'
+                    borderColor: '#1792e5'
                 }
 /*
                 {

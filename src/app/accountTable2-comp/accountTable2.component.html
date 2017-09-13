@@ -1,5 +1,7 @@
 <div class="api-doc-component">
-
+	<div class="container" >
+	    <div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
 
 	<p-dataTable [value]="accountListData" selectionMode="single" [(selection)]="selectedAccount" (onRowSelect)="onRowSelect($event)" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[10]">
 		<p-column field="name" header="名字"></p-column>
@@ -44,4 +46,8 @@
             </div>
         </p-footer>
     </p-dialog>
+
+    </div>
+        </div>
+    </div>	
 </div>

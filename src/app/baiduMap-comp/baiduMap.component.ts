@@ -40,11 +40,12 @@ export class BaiduMapComponent implements OnInit, OnDestroy {
 		comEvent.mComEvent.subscribe((sJson: string) => {
 			let rep = JSON.parse(sJson);
 
-//			console.log("push-alarmMsg---:" + rep['devicename']);
+			console.log("push-alarmMsg-1--:" + rep['devicename']);
 			if (rep['action'] == "push-alarmMsg") 
 			{
 				if(null != this.markerList[rep['devicename']]){
 					//need do, check devicename is Marker
+					console.log("push-alarmMsg-2--: UP!");
 					this.markerList[rep['devicename']].setAnimation('AMAP_ANIMATION_BOUNCE');
 				}				
 			}
@@ -53,6 +54,7 @@ export class BaiduMapComponent implements OnInit, OnDestroy {
 
 
 	ngOnInit() {
+		console.log("init map===");
 		//data for new function
 		this.initDeviceMapInfo();
 
@@ -120,6 +122,18 @@ export class BaiduMapComponent implements OnInit, OnDestroy {
 
 		this.mMap.setFitView();
 
+		//bounce alarm device
+		let alarmDeviceList = this.mCusomList.getAlarmDevice();
+
+		
+		for (let i = 0; i < alarmDeviceList.length; i++)
+		{
+			if(null != this.markerList[alarmDeviceList[i]]){
+				//need do, check devicename is Marker
+				console.log("push-alarmMsg-2--: UP!");
+				this.markerList[alarmDeviceList[i]].setAnimation('AMAP_ANIMATION_BOUNCE');
+			}			
+		}
 	}
 	// 实例化点标记
 	addMarker(): void {
@@ -151,13 +165,21 @@ export class BaiduMapComponent implements OnInit, OnDestroy {
 		if("" !=this.deviceName)
 		{
 			this.markerList[this.deviceName].setAnimation('AMAP_ANIMATION_NONE');
-		}
+		
+			this.mCusomList.clearAlarmDevice(this.deviceName);
 
-		//need do, none of alarm will be pause
-		var myAuto = <any>document.getElementById('myaudio');
-		myAuto.pause();
-		this.deviceName = "";		
-		this.mInfoWindow.close();//openInfo()
+			if(!this.mCusomList.alarmDeviceCount())
+			{
+				//need do, none of alarm will be pause
+				var myAuto = <any>document.getElementById('myaudio');
+				myAuto.pause();
+			}	
+			
+
+			//clear info
+			this.deviceName = "";		
+			this.mInfoWindow.close();//openInfo()
+		}
 	}
 
 	initDeviceMapInfo() {
@@ -167,18 +189,18 @@ export class BaiduMapComponent implements OnInit, OnDestroy {
 		}
 
 		//data for new function
-		this.deviceMapInfoList[0].setDeviceMapIfno("device0", [121.614000, 31.195000], "上海浦东张江李冰路");
-		this.deviceMapInfoList[1].setDeviceMapIfno("device1", [121.613904, 31.191176], "上海浦东张江华佗路");
-		this.deviceMapInfoList[2].setDeviceMapIfno("device3", [121.615904, 31.196423], "上海浦东张江藿香路");
-		this.deviceMapInfoList[3].setDeviceMapIfno("device4", [121.612122, 31.191176], "上海浦东张江祖冲之路");
-		this.deviceMapInfoList[4].setDeviceMapIfno("device2", [121.617271, 31.192501], "上海浦东张江金科路");
-		this.deviceMapInfoList[5].setDeviceMapIfno("device5", [121.618904, 31.193423], "上海浦东张江张衡路");
-		this.deviceMapInfoList[6].setDeviceMapIfno("nbiot01", [121.617000, 31.195000], "上海浦东张江李冰路");
-		this.deviceMapInfoList[7].setDeviceMapIfno("nbiot02", [121.613978, 31.161122], "上海浦东张江华佗路");
-		this.deviceMapInfoList[8].setDeviceMapIfno("nbiot03", [121.612233, 31.186423], "上海浦东张江藿香路");
-		this.deviceMapInfoList[9].setDeviceMapIfno("nbiot04", [121.552166, 31.188176], "上海浦东张江祖冲之路");
-		this.deviceMapInfoList[10].setDeviceMapIfno("nbiot05", [121.587271, 31.122588], "上海浦东张江金科路");
-		this.deviceMapInfoList[11].setDeviceMapIfno("nbiot06", [121.618955, 31.153423], "上海浦东张江张衡路");
+		this.deviceMapInfoList[0].setDeviceMapIfno("device0", [121.614000, 31.195000], "上海浦东李冰路");
+		this.deviceMapInfoList[1].setDeviceMapIfno("device1", [121.613904, 31.191176], "上海浦东张衡路1号");
+		this.deviceMapInfoList[2].setDeviceMapIfno("device3", [121.615904, 31.196423], "上海浦东伽利略路");
+		this.deviceMapInfoList[3].setDeviceMapIfno("device4", [121.612122, 31.191176], "上海浦东哥白尼路");
+		this.deviceMapInfoList[4].setDeviceMapIfno("device2", [121.617271, 31.192501], "上海浦东张衡路2号");
+		this.deviceMapInfoList[5].setDeviceMapIfno("device5", [121.618904, 31.193423], "上海浦东张衡路3号");
+		this.deviceMapInfoList[6].setDeviceMapIfno("nbiot01", [121.617000, 31.195000], "上海浦东李冰路");
+		this.deviceMapInfoList[7].setDeviceMapIfno("nbiot02", [121.613978, 31.161122], "上海浦东韩钱路");
+		this.deviceMapInfoList[8].setDeviceMapIfno("nbiot03", [121.612233, 31.186423], "上海浦东上科路");
+		this.deviceMapInfoList[9].setDeviceMapIfno("nbiot04", [121.552166, 31.188176], "上海浦东沪南路");
+		this.deviceMapInfoList[10].setDeviceMapIfno("nbiot05", [121.587271, 31.122588], "上海浦东川周公路");
+		this.deviceMapInfoList[11].setDeviceMapIfno("nbiot06", [121.618955, 31.153423], "上海浦东康桥东路");
 
 		
 	}

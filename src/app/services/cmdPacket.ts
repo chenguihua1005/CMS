@@ -1,4 +1,4 @@
-import { Component, Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class CmdPacket {
@@ -212,7 +212,8 @@ export class CmdPacket {
 	}
 	private Clienttransit: any = {
 		action: "transit",
-		client: "nbiot01",
+		//client: "nbiot01",
+		client: "",
 		id: this.getNewID(),
 		data: ""
 	}
@@ -228,10 +229,10 @@ export class CmdPacket {
 	constructor() {
 		this.mCmdPacket = new EventEmitter();
 	}
-	gettransitdata(sSubid: number,sZoneID: number): string {
+	gettransitdata(sSubid: number,sZoneID: number,client:string): string {
 		this.ClienttransitJson.subsysid =sSubid;
 		this.ClienttransitJson.zoneid = sZoneID;
-
+        this.Clienttransit.client =client;
 		this.Clienttransit.data =this.ClienttransitJson;
 		return JSON.stringify(this.Clienttransit);
 	}

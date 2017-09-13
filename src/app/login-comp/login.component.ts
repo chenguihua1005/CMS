@@ -13,30 +13,31 @@ import { DeviceMapIfno } from '../services/deviceMapInfo';
 import { Domain} from '../services/domain';
 import {SelectItem} from 'primeng/primeng';
 
-@Component({
+
+
+declare var $: any;
+
+  @Component({
 	moduleId: module.id,
 	selector: 'sel-login',
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-	deviceMapInfoList: DeviceMapIfno[] = []; 
+	deviceMapInfoList: DeviceMapIfno[] = [];
 	test:string[] = [];
 	domainList: Domain[] =[];
 
 	data: any;
-	
 
-	
     types: SelectItem[];
 
 	selectedType: string;
 
 	bindName: string = "client0";
 	bindPassword: string = "123456";
-	
-	constructor(private ws: WebsocketClient, private comEvent: ComEvent, private cmdPacket: CmdPacket, private mCusomList: CustomList) {
 
+	constructor(private ws: WebsocketClient, private comEvent: ComEvent, private cmdPacket: CmdPacket, private mCusomList: CustomList) {
 		ws.mOnMsg.subscribe((sJson: string) => {
 
 			let rep = JSON.parse(sJson);
@@ -50,8 +51,6 @@ export class LoginComponent implements OnInit {
 				comEvent.mComEvent.emit(sJson);
 			}
 		})
-
-
 	}
 
 	ngOnInit() {

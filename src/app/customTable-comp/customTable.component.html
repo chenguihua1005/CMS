@@ -1,11 +1,24 @@
 
+<div class="row">
+  测试数据2
+  <input
+    [(ngModel)]="aaa"/>
+</div>
+
+<div class="row">
+  测试数据3
+  <input
+    [(ngModel)]="bbb"/>
+</div>
+
+
 <p-dataTable [value]="customListData" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
-		
+
 		<p-column field="customid" header="客户ID"></p-column>
-		<p-column field="address" header="地址"></p-column> 
+		<p-column field="address" header="地址"></p-column>
 		<p-column field="domainid" header="域ID"></p-column>
 	    <p-column field="name" header="名字"></p-column>
 		<p-column field="telephone" header="电话"></p-column>
 		<p-column field="comments" header="关联设备"></p-column>
-	
+
 </p-dataTable>

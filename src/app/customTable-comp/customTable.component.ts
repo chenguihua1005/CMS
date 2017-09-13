@@ -15,7 +15,8 @@ import { Panel } from '../services/panel';
 })
 export class CustomTableComponent {
 	public totalItems: number = 0;
-	
+
+
 	public customListData: Array < Custom > = [];
 	public customList: Array < Custom > = [];
 	public mDevicename: string;
@@ -27,6 +28,7 @@ export class CustomTableComponent {
 			let rep = JSON.parse(sJson);
 
 		});
+
 
 	}
 	ngOnInit() {
@@ -42,14 +44,14 @@ export class CustomTableComponent {
 				this.panelList[customid] = this.mCusomList.getCustomPanelList(customid);
 			}
 		}
-		
-		
+
+
 	}
-	
+
 	onSelectPanel(hero: Custom): void {
 		console.log("=======onSelectPanel======="+hero.customid);
-		
-		
+
+
 	}
 	public editBtn(cur: Custom): void {
 		//console.log(zone);

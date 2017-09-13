@@ -12,6 +12,7 @@ import { ComEvent } from '../services/comEvent';
 })
 export class HomeComponent implements OnInit {
 	public sPage: string;
+  public aaa: string;
 
 
 	constructor(private comEvent: ComEvent) {

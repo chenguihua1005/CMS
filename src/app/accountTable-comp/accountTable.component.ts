@@ -75,6 +75,7 @@ export class AccountTableComponent {
 	ngOnInit() {
 		this.accountListData = this.mCusomList.getAccountList();
 		this.totalItems = this.accountListData.length;
+
 		//type map to string
 		this.parseType();
 		console.log("#accountTable1#####" + this.accountListData.length);

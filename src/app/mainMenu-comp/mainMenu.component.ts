@@ -34,16 +34,19 @@ export class MainMenuComponent {
 		isOpen: false
 	};
 
+
+  public aaa:String;
+
 	panelList: Map<string, Array<Panel>> = new Map<string, [Panel]>();
 	customList: Array<Custom> = [];
 	tmpPanelList: Panel[] = [];
 	selectedCustom: Custom;
 	curCustomid: string;
 	selectedPanel: Panel;
-	
+
 	//for primeng
 	items: MenuItem[] = [];
-	
+
 	public viewPanelList: any = {
 		customList: [],
 		isOpen: false
@@ -53,7 +56,13 @@ export class MainMenuComponent {
 	alarm:Alarm = new Alarm();
 
 	constructor(private ws: WebsocketClient, private comEvent: ComEvent, private cmdPacket: CmdPacket, private mCusomList: CustomList) {
-		comEvent.mComEvent.subscribe((sJson: string) => {
+
+    window['modal'].subscribe((json: any) => {
+      this.aaa = json.aaa;
+      console.log(this.aaa);
+    });
+
+    comEvent.mComEvent.subscribe((sJson: string) => {
 
 			let rep = JSON.parse(sJson);
 			//console.log("action:" + rep['action']);
@@ -76,7 +85,7 @@ export class MainMenuComponent {
 					break;
 				}
 			} else if (rep['action'] == "clientgetcustomlist-ack") {
-				
+
 				console.log(rep['customlist']);
 				if (rep['customlist'] == null || rep['errorcode'] > 0) {
 					return;
@@ -88,11 +97,11 @@ export class MainMenuComponent {
 				this.customList = rep['customlist'];
 				for (let i = 0; i < rep['customlist'].length; i++) {
 					//store data map
-					this.mCusomList.setCustom(rep['customlist'][i]);		
-					
-					//store local 
+					this.mCusomList.setCustom(rep['customlist'][i]);
+
+					//store local
 					//this.items[i] = {"label":"",  command:(this.onSelectCustom), items:[]}; //
-					this.items[i] = {"label":"",  command:(event)=>{ this.onSelectCustom(event);}, items:[]}; 
+					this.items[i] = {"label":"",  command:(event)=>{ this.onSelectCustom(event);}, items:[]};
 					this.items[i].label = this.customList[i].name;
 					this.items[i].icon = this.customList[i].customid;
 				}
@@ -130,7 +139,7 @@ export class MainMenuComponent {
 
 				for (let i = 0; i < rep['devicelist'].length; i++) {
 					this.mCusomList.setCustomPanel(rep['devicelist'][i]['customid'], rep['devicelist'][i]);
-					
+
 					//let req1 = this.cmdPacket.getClientgetrelaystatus(rep['devicelist'][i]['devicename']);
 					//this.ws.doSend(req1);
 					//req1 = this.cmdPacket.getClientgetalarm(rep['devicelist'][i]['devicename']);
@@ -169,8 +178,8 @@ export class MainMenuComponent {
 							}
 
 						}
-						
-					}	
+
+					}
 				}
 
 				//send event to chart component for telling get all device information
@@ -214,7 +223,12 @@ export class MainMenuComponent {
 				//let lZonelist: Array<Zone> = this.mCusomList.getCustomPanelZoneList(rep['devicename']);
 				//console.log(lZonelist);
 			}  else if (rep['action'] == "alarmtoclient" || rep['action'] == "pushalarm") {
+				console.log("get pushalarm" + rep);
 				for (let i = 0; i < rep['alarmlist'].length; i++) {
+					//log alarm device for map
+					this.mCusomList.setAlarmDevice(rep['alarmlist'][i]['devicename']);
+
+					//log alarm report
 					this.mCusomList.setCustomPanelAlarm(rep['alarmlist'][i]['devicename'], rep['alarmlist'][i]);
 					let timeCn = this.alarm.getCovertGMT(rep['alarmlist'][i]['time']);
 					comEvent.mComEvent.emit('{"action":"push-alarmMsg","devicename":"' + rep['alarmlist'][i]['devicename'] + '","myinfo":"' + "#" + rep['alarmlist'][i]['alarmid'] + "#" + rep['alarmlist'][i]['customid'] + "#" + this.alarm.getEventID(rep['alarmlist'][i]['eventid'])  + "#" + timeCn + '"}');
@@ -234,7 +248,7 @@ export class MainMenuComponent {
 				changezone['status'] = rep['zonelist'][i]['status'];
 					this.mCusomList.setCustomPanelZone(rep['devicename'], changezone);
 				}
-				
+
 				comEvent.mComEvent.emit('{"action":"push-zoneMsg","subsysid":"' + rep['subsysid'] +'"}');
 
 				let req = this.cmdPacket.getZonechangetoclientAck();
@@ -252,8 +266,8 @@ export class MainMenuComponent {
 					comEvent.mComEvent.emit('{"action":"' + "getallaccountlist" + '"}');
 					console.log("all account:", this.mCusomList);
 				}
-			} 
-			
+			}
+
 
 		})
 

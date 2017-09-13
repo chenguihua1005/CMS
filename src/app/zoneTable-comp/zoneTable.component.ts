@@ -61,7 +61,11 @@ export class ZoneTableComponent {
 	}
 
 	public silence(event): void {
-		let	req = this.cmdPacket.gettransitdata(this.zone.subsysid,this.zone.zoneid);
+		this.mDevicename =this.mCusomList.getCurDeviceName();
+		let	req = this.cmdPacket.gettransitdata(this.zone.subsysid,this.zone.zoneid,this.mDevicename);
 		this.ws.doSend(req);
 	}	
+	public save():void{
+
+	}
 }

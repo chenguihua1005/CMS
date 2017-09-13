@@ -24,30 +24,16 @@ export class AlarmTableComponent {
 
 		comEvent.mComEvent.subscribe((sJson: string) => {
 			let rep = JSON.parse(sJson);
-			//console.log("========================"+rep['action']);
-			//console.log(sJson);
+
 			if (rep['action'] == "push-alarmMsg") {
 
 				this.mDevicename = this.mDevicename = this.mCusomList.getCurDeviceName();
 				if (this.mDevicename == rep['devicename']) {
 					this.alarmListData = [...this.mCusomList.getCustomPanelAlarmList(this.mDevicename)];
-					//this.alarmListData = [...this.mCusomList.getCustomPanelAlarmList(rep['devicename'])];
 					this.totalItems = this.alarmListData.length;
-					//console.log("#alarmTable##push-alarmMsg###" + this.mDevicename);
-					//type map to string
-					//this.parseType();
 				}
 			} else if (rep['action'] == "clientgetalarm-alarmMsg") {
-				//console.log("#alarmTable##clientgetalarm-alarmMsg###" + rep['devicename']);
-				//				this.mDevicename = rep['devicename'];
-				//				this.alarmListData = this.mCusomList.getCustomPanelAlarmList(this.mDevicename);
-				//				this.totalItems = this.alarmListData.length; 
-				//				this.alarmList = [];
-				//				for(let i = 0; i < 10; i++) {
-				//					if(i < this.alarmListData.length){
-				//					 	this.alarmList[i] = this.alarmListData[i];
-				//					}
-				//				}
+
 			} else if (rep['action'] == "press-panel") {
 				
 				this.mDevicename = this.mCusomList.getCurDeviceName();
@@ -57,28 +43,32 @@ export class AlarmTableComponent {
 				this.ws.doSend(req1);
 				
 			}else if (rep['action'] == "clientgetalarm-ack") {
-				//console.log("clientgetalarm-ack***********");
-				if (rep['alarmlist'] == null || rep['errorcode'] > 0) {
+				if (rep['errorcode'] > 0) {
 					return;
 				}
-				for (let i = 0; i < rep['alarmlist'].length; i++) {
-					this.mCusomList.setCustomPanelAlarm(rep['alarmlist'][i]['devicename'], rep['alarmlist'][i]);
 
+				if (rep['alarmlist'] != null) 
+				{
+					for (let i = 0; i < rep['alarmlist'].length; i++) {
+						this.mCusomList.setCustomPanelAlarm(rep['alarmlist'][i]['devicename'], rep['alarmlist'][i]);
+					}
+					this.alarmListData = this.mCusomList.getCustomPanelAlarmList(this.mDevicename);
+					this.totalItems = this.alarmListData.length;
+					//type map to string
+					this.parseType();
+				} else
+				{
+					this.alarmListData = [];
+					this.totalItems = 0;
 				}
-				this.alarmListData = this.mCusomList.getCustomPanelAlarmList(this.mDevicename);
-				this.totalItems = this.alarmListData.length;
-				//type map to string
-				//this.parseType();
+
 				console.log("#alarmTable##press-panel:"+ this.mDevicename +"###====="+ this.totalItems);
-				//comEvent.mComEvent.emit('{"action":"clientgetalarm-alarmMsg","devicename":"'+rep['alarmlist'][0]['devicename']+'"}');	
-				//let lAlarmlist:Array<Alarm>  = this.mCusomList.getCustomPanelAlarmList('device0');
-				//console.log(lAlarmlist);
+				
 			}
 
 		});
 
 	}
-
 	ngOnInit() {
 
 		this.mDevicename = this.mCusomList.getCurDeviceName();
@@ -88,7 +78,7 @@ export class AlarmTableComponent {
 
 	parseType() {
 		for(let data of this.alarmListData) {
-			data.eventid = this.getTypeStringByTypeID(parseInt(this.getEventID(data.eventid)));
+//			data.eventid = this.getTypeStringByTypeID(parseInt(this.getEventID(data.eventid)));
 		}
 	}
 
@@ -592,7 +582,6 @@ export class AlarmTableComponent {
 		}
 	}
 
-
 	public getEventID(eventNum: string): string {
 
 		let eventIDType = eventNum.substring(0, 1);
@@ -608,8 +597,7 @@ export class AlarmTableComponent {
 		}
 		else
 		{
-			//return "EventID Error";
-			return eventNum;
+			return "EventID Error";
 		}
 
 		return eventIDType + eventIDNum;
